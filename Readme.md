@@ -15,7 +15,7 @@ As gem
 
 ```ruby
 # add to Gemfile
-gem "parallel_tests", :group => :development
+gem "parallel_tests", :git => 'git://github.com/siyelo/parallel_tests.git', :group => :development
 ```
 OR as plugin
 
@@ -157,7 +157,7 @@ Note if your `cucumber.yml` default profile uses `<%= std_opts %>` you may need 
 
 To rerun failures:
 
-	cucumber @tmp/cucumber_failures.log
+  cucumber @tmp/cucumber_failures.log
 
 Setup for non-rails
 ===================
