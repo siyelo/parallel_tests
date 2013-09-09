@@ -38,11 +38,15 @@ module ParallelTests
       end
 
       def check_for_pending_migrations
-        ["db:abort_if_pending_migrations", "app:db:abort_if_pending_migrations"].each do |abort_migrations|
-          if Rake::Task.task_defined?(abort_migrations)
-            Rake::Task[abort_migrations].invoke
-            break
+        begin
+          ["db:abort_if_pending_migrations", "app:db:abort_if_pending_migrations"].each do |abort_migrations|
+            if Rake::Task.task_defined?(abort_migrations)
+              Rake::Task[abort_migrations].invoke
+              break
+            end
           end
+        rescue Exception
+          puts 'WARNING: You have pending migrations'
         end
       end
 
